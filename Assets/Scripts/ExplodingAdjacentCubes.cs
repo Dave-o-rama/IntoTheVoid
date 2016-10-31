@@ -1,19 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class ExplodingAdjacentCubes : MonoBehaviour {
 
+	GameObject[] thingsToDestroy;
+	public int cubesToDestroy = 0;
+
 	void Start(){
-		Collider[] otherBricks = new Collider[10];
-		otherBricks = Physics.OverlapSphere (new Vector3 (0f, 0f, 0f), 2f);
-		int i = 0;
-		while (i < otherBricks.Length) {
-			print (otherBricks [i].gameObject);
-			i++;
+		thingsToDestroy = new GameObject[24];
+	}
+
+	void OnTriggerEnter(Collider col){
+		print (col.gameObject.name);
+
+		if (col.gameObject.tag == "cannotClickCube" || col.gameObject.tag == "shrinkCube" || col.gameObject.tag == "regularCube" || col.gameObject.tag == "explodeCube") {
+			thingsToDestroy [cubesToDestroy] = col.gameObject;
+			cubesToDestroy++;
 		}
+
+
 	}
 
 	void OnDestroy(){
+		int i = 0;
+		while (i <= cubesToDestroy) {
+			Destroy (thingsToDestroy [i]);
+			++i;
+		}
 		print ("meme");
+	}
+
+	void OnApplicationQuit(){
+		Destroy (this.gameObject);
 	}
 }

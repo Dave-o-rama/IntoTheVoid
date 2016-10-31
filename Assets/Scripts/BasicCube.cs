@@ -14,8 +14,13 @@ public class BasicCube : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (isClicked) {
+			GameObject.Find ("ClickTracker").GetComponent<ClickTracker> ().cubesClicked++;
 			Destroy (this.gameObject);
 		}
 
+	}
+
+	void OnApplicationQuit(){
+		Destroy (this.gameObject);
 	}
 }

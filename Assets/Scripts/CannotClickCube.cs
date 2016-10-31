@@ -30,4 +30,8 @@ public class CannotClickCube : MonoBehaviour {
 		}
 
 	}
+
+	void OnApplicationQuit(){
+		Destroy (this.gameObject);
+	}
 }
