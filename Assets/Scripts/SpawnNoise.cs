@@ -16,6 +16,7 @@ public class SpawnNoise : MonoBehaviour {
 		if (_explodingCube != null) {
 			while (_explodingCube.cubeValue > 0) {
 				Instantiate (visualNoise, transform.position, Quaternion.Euler (new Vector3 (0f, 0f, Random.Range (0, 359))));
+				Instantiate (audioNoise, this.gameObject.transform.position, Quaternion.identity);
 				_explodingCube.cubeValue--;
 			}
 		} else {

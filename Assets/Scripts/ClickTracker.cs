@@ -14,5 +14,9 @@ public class ClickTracker : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		volumeModifier = cubesClicked * .023f;
+
+		if (cubesClicked >= 50) {
+			Application.LoadLevel (1);
+		}
 	}
 }
