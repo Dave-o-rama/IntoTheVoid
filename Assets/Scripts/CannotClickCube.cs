@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class CannotClickCube : MonoBehaviour {
-
+	
 	public float smallTime;
 	private float initialSmallTime;
 

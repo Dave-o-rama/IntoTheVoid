@@ -26,6 +26,8 @@ public class CameraClicker : MonoBehaviour {
 				mouseRayHit.transform.GetComponent<ExplodingCube> ().isClicked = true;
 			} else if (mouseRayHit.transform.gameObject.tag == "shrinkCube") {
 				mouseRayHit.transform.GetComponent<ShrinkCube> ().isClicked = true;
+			} else if (mouseRayHit.transform.gameObject.tag == "win") {
+				print ("YOU WIN!");
 			}
 
 

@@ -12,8 +12,6 @@ public class ExplodingAdjacentCubes : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col){
-		print (col.gameObject.name);
-
 		if (col.gameObject.tag == "cannotClickCube" || col.gameObject.tag == "shrinkCube" || col.gameObject.tag == "regularCube" || col.gameObject.tag == "explodeCube") {
 			thingsToDestroy [cubesToDestroy] = col.gameObject;
 			cubesToDestroy++;
@@ -28,7 +26,6 @@ public class ExplodingAdjacentCubes : MonoBehaviour {
 			Destroy (thingsToDestroy [i]);
 			++i;
 		}
-		print ("meme");
 	}
 
 	void OnApplicationQuit(){

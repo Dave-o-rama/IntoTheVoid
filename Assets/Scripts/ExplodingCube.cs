@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ExplodingCube : MonoBehaviour {
 
+	public int cubeValue;
 	private CameraClicker cameraClicker;
 	public bool isClicked = false;
 
@@ -14,7 +15,7 @@ public class ExplodingCube : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (isClicked) {
-			GameObject.Find ("ClickTracker").GetComponent<ClickTracker> ().cubesClicked++;
+			GameObject.Find ("ClickTracker").GetComponent<ClickTracker> ().cubesClicked += cubeValue;
 			Destroy (this.gameObject);
 		}
 	}
