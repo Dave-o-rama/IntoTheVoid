@@ -8,7 +8,7 @@ public class BlockGenerator : MonoBehaviour {
 	public int blocksWide;
 	public int blocksDeep;
 
-	private bool shrinkBrickDropped = false;
+	public bool shrinkBrickDropped = false;
 
 	// Use this for initialization
 	void Awake () {
@@ -19,9 +19,9 @@ public class BlockGenerator : MonoBehaviour {
 				int i;
 
 				if (!shrinkBrickDropped) {
-					i = Random.Range (0, bricks.Length - 1);
+					i = Random.Range (0, bricks.Length);
 				} else {
-					i = Random.Range (0, 2);
+					i = Random.Range (0, 3);
 				}
 
 				if (i == 1) {
