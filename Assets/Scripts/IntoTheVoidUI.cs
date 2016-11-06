@@ -34,6 +34,7 @@ public class IntoTheVoidUI : MonoBehaviour {
 		_renderer.color = clickedColor;
 
 		if (isButton) {
+			GameObject.Find ("GameData").GetComponent<GameData> ().lastMenuButtonClicked = this.gameObject.name;
 			if (nextLevel != null) {
 				SceneManager.LoadScene (nextLevel);
 			} else {

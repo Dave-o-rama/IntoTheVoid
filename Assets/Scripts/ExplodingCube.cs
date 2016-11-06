@@ -7,8 +7,11 @@ public class ExplodingCube : MonoBehaviour {
 	private CameraClicker cameraClicker;
 	public bool isClicked = false;
 
+	private Rigidbody _rigidbody;
+
 	// Use this for initialization
 	void Start () {
+		_rigidbody = GetComponent<Rigidbody> ();
 		cameraClicker = GameObject.Find("Main Camera").GetComponent<CameraClicker> ();
 	}
 	
@@ -18,6 +21,18 @@ public class ExplodingCube : MonoBehaviour {
 			GameObject.Find ("ClickTracker").GetComponent<ClickTracker> ().cubesClicked += cubeValue;
 			Destroy (this.gameObject);
 		}
+	}
+
+	void OnMouseEnter(){
+		_rigidbody.useGravity = false;
+		_rigidbody.isKinematic = true;
+		this.gameObject.transform.position += new Vector3 (0f, 0.1f, 0f);
+	}
+
+	void OnMouseExit(){
+		_rigidbody.useGravity = true;
+		_rigidbody.isKinematic = false;
+		this.gameObject.transform.position -= new Vector3 (0f, 0.1f, 0f);
 	}
 
 	void OnApplicationQuit(){

@@ -10,9 +10,13 @@ public class ShrinkCube : MonoBehaviour {
 	public GameObject edgeFloor;
 	public GameObject edgeBarrier;
 
+	private Rigidbody _rigidbody;
+
 
 	// Use this for initialization
 	void Start () {
+		_rigidbody = GetComponent<Rigidbody> ();
+
 		cameraClicker = GameObject.Find("Main Camera").GetComponent<CameraClicker> ();
 		edgeFloor = GameObject.Find ("RightFloor");
 		edgeBarrier = GameObject.Find ("RightBarrier");
@@ -27,6 +31,18 @@ public class ShrinkCube : MonoBehaviour {
 			edgeBarrier.SetActive (true);
 			Destroy (this.gameObject);
 		}
+	}
+
+	void OnMouseEnter(){
+		_rigidbody.useGravity = false;
+		_rigidbody.isKinematic = true;
+		this.gameObject.transform.position += new Vector3 (0f, 0.1f, 0f);
+	}
+
+	void OnMouseExit(){
+		_rigidbody.useGravity = true;
+		_rigidbody.isKinematic = false;
+		this.gameObject.transform.position -= new Vector3 (0f, 0.1f, 0f);
 	}
 
 	void OnApplicationQuit(){
