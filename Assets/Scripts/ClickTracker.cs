@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class ClickTracker : MonoBehaviour {
 
 	public int cubesClicked = 0;
 	public float volumeModifier;
+
+	public float noiseIncrease;
+	public int cubesClickedToLose;
+
+	public bool gameLost = false;
 
 	// Use this for initialization
 	void Start () {
@@ -13,10 +19,10 @@ public class ClickTracker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		volumeModifier = cubesClicked * .023f;
+		volumeModifier = cubesClicked * noiseIncrease;
 
-		if (cubesClicked >= 50) {
-			Application.LoadLevel (1);
+		if (cubesClicked >= cubesClickedToLose) {
+			gameLost = true;
 		}
 	}
 }
