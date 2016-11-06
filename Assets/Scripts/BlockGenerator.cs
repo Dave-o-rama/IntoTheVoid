@@ -5,13 +5,16 @@ public class BlockGenerator : MonoBehaviour {
 
 	public GameObject[] bricks;
 
-	public int blocksWide;
+	public int gridWidth;
+	private int blocksWide;
 	public int blocksDeep;
 
 	public bool shrinkBrickDropped = false;
 
 	// Use this for initialization
 	void Awake () {
+		blocksWide = gridWidth;
+
 		while (blocksDeep > 0) {
 
 			while (blocksWide > 0) {
@@ -52,8 +55,8 @@ public class BlockGenerator : MonoBehaviour {
 				blocksWide--;
 			}
 
-			this.gameObject.transform.position += new Vector3 (-4.4f, 0f, 1.1f);
-			blocksWide = 4;
+			this.gameObject.transform.position += new Vector3 (gridWidth * -1.1f, 0f, 1.1f);
+			blocksWide = gridWidth;
 			blocksDeep--;
 		}
 	}
