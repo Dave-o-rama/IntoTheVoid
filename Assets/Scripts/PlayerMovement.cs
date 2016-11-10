@@ -10,8 +10,6 @@ public class PlayerMovement : MonoBehaviour {
 
 	public float slowdownRate;
 
-	public bool isRunning;
-
 	private float initialLeftMovementSpeed;
 	private float initialRightMovementSpeed;
 	private float initialForwardMovementSpeed;
@@ -55,6 +53,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetAxis ("Vertical") < 0) {
 			_rigidbody.AddForce(new Vector3 (0f, 0f, -backwardMovementSpeed));
 		}
-
 	}
+
+
 }
