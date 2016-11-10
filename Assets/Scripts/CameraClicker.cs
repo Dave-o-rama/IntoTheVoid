@@ -57,6 +57,9 @@ public class CameraClicker : MonoBehaviour {
 		}
 
 		if (_clickTracker.gameLost) {
+			GameObject.Find ("GameData").GetComponent<GameData> ().currentWave = 0;
+			GameObject.Find ("GameData").GetComponent<GameData> ().fieldDepth = GameObject.Find ("GameData").GetComponent<GameData> ().initialFieldDepth;
+			GameObject.Find ("GameData").GetComponent<GameData> ().fieldWidth = GameObject.Find ("GameData").GetComponent<GameData> ().initialFieldWidth;
 			_playerMovement.enabled = false;
 			loseMenu.SetActive (true);
 		}

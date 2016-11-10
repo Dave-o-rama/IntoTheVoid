@@ -18,9 +18,9 @@ public class ShrinkCube : MonoBehaviour {
 		_rigidbody = GetComponent<Rigidbody> ();
 
 		cameraClicker = GameObject.Find("Main Camera").GetComponent<CameraClicker> ();
-		edgeFloor = GameObject.Find ("RightFloor");
-		edgeBarrier = GameObject.Find ("RightBarrier");
-		edgeBarrier.SetActive (false);
+		edgeFloor = GameObject.Find ("BrickGenerator").GetComponent<BlockGenerator> ().shrinkFloor;
+		//edgeBarrier = GameObject.Find ("RightBarrier");
+		//edgeBarrier.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -28,7 +28,7 @@ public class ShrinkCube : MonoBehaviour {
 		if (isClicked) {
 			GameObject.Find ("ClickTracker").GetComponent<ClickTracker> ().cubesClicked += cubeValue;
 			Destroy (edgeFloor);
-			edgeBarrier.SetActive (true);
+			GameObject.Find ("rightWall(Clone)").transform.position -= new Vector3 (1.1f, 0f, 0f);
 			Destroy (this.gameObject);
 		}
 	}

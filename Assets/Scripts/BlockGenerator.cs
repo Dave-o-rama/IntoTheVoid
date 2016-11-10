@@ -4,6 +4,11 @@ using System.Collections;
 public class BlockGenerator : MonoBehaviour {
 
 	public GameObject[] bricks;
+	public GameObject floor;
+	public GameObject rightWall;
+	public GameObject frontWall;
+	public GameObject reward;
+	[HideInInspector] public GameObject shrinkFloor;
 
 	public int gridWidth;
 	private int blocksWide;
@@ -11,8 +16,17 @@ public class BlockGenerator : MonoBehaviour {
 
 	public bool shrinkBrickDropped = false;
 
+	public bool floorDropped = false;
+	public int floorsCount = 0;
+
+	public bool rightWallDropped = false;
+
 	// Use this for initialization
 	void Awake () {
+		gridWidth = GameObject.Find ("GameData").GetComponent<GameData> ().fieldWidth;
+		blocksDeep = GameObject.Find ("GameData").GetComponent<GameData> ().fieldDepth;
+		GameObject.Find ("GameData").GetComponent<GameData> ().currentWave++;
+
 		blocksWide = gridWidth;
 
 		while (blocksDeep > 0) {
@@ -51,18 +65,41 @@ public class BlockGenerator : MonoBehaviour {
 					shrinkBrickDropped = true;
 				}
 
+
+
+				if (!floorDropped) {
+					shrinkFloor = Instantiate (floor, transform.position - new Vector3(0f,1.1f,0f), Quaternion.identity) as GameObject;
+					floorsCount++;
+				}
+
 				this.gameObject.transform.position += new Vector3 (1.1f, 0f, 0f);
 				blocksWide--;
 			}
+
+			if (floorsCount == gridWidth) {
+				floorDropped = true;
+			}
+
+			if (floorDropped && !rightWallDropped) {
+				Instantiate (rightWall, transform.position, Quaternion.identity);
+				rightWallDropped = true;
+			}
+
 
 			this.gameObject.transform.position += new Vector3 (gridWidth * -1.1f, 0f, 1.1f);
 			blocksWide = gridWidth;
 			blocksDeep--;
 		}
+
+		Instantiate (frontWall, transform.position + new Vector3 (0f, 0f, 10f), Quaternion.identity);
+		Instantiate (reward, transform.position + new Vector3((gridWidth / 2f), 0f, 8.5f), Quaternion.identity);
+
+		ModifyField ();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void ModifyField () {
+		GameObject.Find ("GameData").GetComponent<GameData> ().fieldWidth = gridWidth + 2;
+		GameObject.Find ("GameData").GetComponent<GameData> ().fieldDepth += 2;
 	}
 }

@@ -13,8 +13,8 @@ public class ClickTracker : MonoBehaviour {
 	public bool gameLost = false;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Awake () {
+		cubesClickedToLose = (int)((GameObject.Find ("GameData").GetComponent<GameData> ().fieldWidth * GameObject.Find ("GameData").GetComponent<GameData> ().fieldDepth) / 2.88f);
 	}
 	
 	// Update is called once per frame

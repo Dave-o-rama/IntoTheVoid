@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	public float slowdownRate;
 
+	public bool isRunning;
+
 	private float initialLeftMovementSpeed;
 	private float initialRightMovementSpeed;
 	private float initialForwardMovementSpeed;
