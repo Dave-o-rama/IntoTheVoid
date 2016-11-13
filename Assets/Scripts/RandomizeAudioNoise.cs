@@ -9,7 +9,7 @@ public class RandomizeAudioNoise : MonoBehaviour {
 	void Start () {
 		_audio = GetComponent<AudioSource> ();
 
-		_audio.volume = Random.Range (0.1f, 0.3f) + GameObject.Find ("ClickTracker").GetComponent<ClickTracker> ().volumeModifier;
+		_audio.volume = 0.01f + GameObject.Find ("ClickTracker").GetComponent<ClickTracker> ().volumeModifier;
 		_audio.pitch = Random.Range (0f, 2f);
 	}
 	
