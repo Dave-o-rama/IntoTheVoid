@@ -36,9 +36,13 @@ public class CameraClicker : MonoBehaviour {
 				mouseRayHit.transform.GetComponent<ExplodingCube> ().isClicked = true;
 			} else if (mouseRayHit.transform.gameObject.tag == "shrinkCube") {
 				mouseRayHit.transform.GetComponent<ShrinkCube> ().isClicked = true;
-			} else if (mouseRayHit.transform.gameObject.tag == "win") {
-				GameObject[] visualNoise = GameObject.FindGameObjectsWithTag("visualNoise");
-				GameObject[] audioNoise = GameObject.FindGameObjectsWithTag("audio");
+			}
+		}
+
+		if (Input.GetMouseButtonDown (0) && Physics.Raycast (mouseRay, out mouseRayHit, 5f) && !_clickTracker.gameLost) {
+			if (mouseRayHit.transform.gameObject.tag == "win") {
+				GameObject[] visualNoise = GameObject.FindGameObjectsWithTag ("visualNoise");
+				GameObject[] audioNoise = GameObject.FindGameObjectsWithTag ("audio");
 
 				for (int i = 0; i < visualNoise.Length; i++) {
 					Destroy (visualNoise [i]);
@@ -50,10 +54,6 @@ public class CameraClicker : MonoBehaviour {
 				_playerMovement.enabled = false;
 				winMenu.SetActive (true);
 			}
-
-
-
-
 		}
 
 		if (_clickTracker.gameLost) {
