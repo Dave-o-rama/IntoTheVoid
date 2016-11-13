@@ -27,6 +27,10 @@ public class BlockGenerator : MonoBehaviour {
 		blocksDeep = GameObject.Find ("GameData").GetComponent<GameData> ().fieldDepth;
 		GameObject.Find ("GameData").GetComponent<GameData> ().currentWave++;
 
+		if (GameObject.Find ("GameData").GetComponent<GameData> ().currentWave == 3) {
+			gridWidth = 4;
+		}
+
 		blocksWide = gridWidth;
 
 		while (blocksDeep > 0) {
