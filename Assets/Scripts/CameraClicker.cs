@@ -8,6 +8,7 @@ public class CameraClicker : MonoBehaviour {
 
 	public GameObject winMenu;
 	public GameObject loseMenu;
+	public int waveLost;
 	private PlayerMovement _playerMovement;
 	private ClickTracker _clickTracker;
 
@@ -57,6 +58,7 @@ public class CameraClicker : MonoBehaviour {
 		}
 
 		if (_clickTracker.gameLost) {
+			waveLost = GameObject.Find ("GameData").GetComponent<GameData> ().currentWave;
 			GameObject.Find ("GameData").GetComponent<GameData> ().currentWave = 0;
 			GameObject.Find ("GameData").GetComponent<GameData> ().fieldDepth = GameObject.Find ("GameData").GetComponent<GameData> ().initialFieldDepth;
 			GameObject.Find ("GameData").GetComponent<GameData> ().fieldWidth = GameObject.Find ("GameData").GetComponent<GameData> ().initialFieldWidth;
