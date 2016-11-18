@@ -10,6 +10,7 @@ public class IntoTheVoidUI : MonoBehaviour {
 	public Color clickedColor;
 
 	public bool isButton;
+	public bool isQuitButton;
 	public string nextLevel;
 
 	// Use this for initialization
@@ -38,8 +39,10 @@ public class IntoTheVoidUI : MonoBehaviour {
 			if (nextLevel != null) {
 				SceneManager.LoadScene (nextLevel);
 			} else {
-				Application.Quit();
+				
 			}
+		} else if (isQuitButton) {
+			Application.Quit ();
 		}
 	}
 
