@@ -39,6 +39,11 @@ public class BlockGenerator : MonoBehaviour {
 
 				int i;
 
+				/// 0 = regular
+				/// 1 = cannotClick
+				/// 2 = explode
+				/// 3 = shrink
+
 				if (!shrinkBrickDropped) {
 					i = Random.Range (0, bricks.Length);
 				} else {
@@ -56,8 +61,13 @@ public class BlockGenerator : MonoBehaviour {
 
 				if (i == 2) {
 					int j = Random.Range (0, 100);
-					if (j < 30) {
-						i = 0;
+					if (j < 40) {
+						int k = Random.Range (0, 20);
+						if (k >= 14) {
+							i = 0;
+						} else {
+							i = 2;
+						}
 					}
 
 					Instantiate (bricks [i], transform.position + new Vector3(0f,1f,0f), Quaternion.identity);
