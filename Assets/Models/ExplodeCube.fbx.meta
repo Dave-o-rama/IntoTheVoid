@@ -1,22 +1,15 @@
 fileFormatVersion: 2
-guid: 8f5aac0fb0aa19e4eaf11279ba097881
-timeCreated: 1478454411
+guid: f0af234df82796943b1b7089e7669126
+timeCreated: 1480262670
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Bumpers
-    100004: Camera
-    100006: Directional Light
     400000: //RootNode
-    400002: Bumpers
-    400004: Camera
-    400006: Directional Light
-    2300000: Bumpers
-    3300000: Bumpers
-    4300000: Bumpers
-    7400000: Take 001
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pCube27
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -42,7 +35,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 110
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
