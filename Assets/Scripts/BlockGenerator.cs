@@ -31,6 +31,8 @@ public class BlockGenerator : MonoBehaviour {
 
 		if (GameObject.Find ("GameData").GetComponent<GameData> ().currentWave == 3) {
 			gridWidth = 4;
+		}else if (GameObject.Find ("GameData").GetComponent<GameData> ().currentWave >= 6) {
+			gridWidth = Random.Range(5,9);
 		}
 
 		blocksWide = gridWidth;
@@ -105,7 +107,13 @@ public class BlockGenerator : MonoBehaviour {
 			}
 
 			if (floorDropped && !rightWallDropped) {
-				Instantiate (rightWall, transform.position, Quaternion.identity);
+				int rightWallsDropped = 1;
+				int j = 0;
+				while (j < blocksDeep / 6) {
+					Instantiate (rightWall, transform.position + new Vector3 (-0.3f, 0.36f, 19.5f * j), Quaternion.identity);
+					rightWallsDropped++;
+					j++;
+				}
 				rightWallDropped = true;
 			}
 
@@ -115,8 +123,8 @@ public class BlockGenerator : MonoBehaviour {
 			blocksDeep--;
 		}
 
-		Instantiate (frontWall, transform.position + new Vector3 (0f, 0f, 10f), Quaternion.identity);
-		Instantiate (reward, transform.position + new Vector3((gridWidth / 2f), 0f, 8.5f), Quaternion.identity);
+		Instantiate (frontWall, transform.position + new Vector3 (0f, 0.35f, 5f), Quaternion.Euler(new Vector3(0f,90f,0f)));
+		Instantiate (reward, transform.position + new Vector3((gridWidth / 2f), 0f, 3.5f), Quaternion.identity);
 
 		ModifyField ();
 	}
