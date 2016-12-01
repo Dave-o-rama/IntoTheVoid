@@ -5,6 +5,8 @@ public class BlockGenerator : MonoBehaviour {
 
 	public GameObject[] bricks;
 	public GameObject floor;
+	public float floorScrollSpeedMin;
+	public float floorScrollSpeedMax;
 	public GameObject rightWall;
 	public GameObject frontWall;
 	public GameObject reward;
@@ -83,6 +85,14 @@ public class BlockGenerator : MonoBehaviour {
 
 				if (!floorDropped) {
 					shrinkFloor = Instantiate (floor, transform.position - new Vector3(0f,1.1f,0f), Quaternion.identity) as GameObject;
+
+					shrinkFloor.GetComponent<FloorMaterialOffset> ().scrollSpeed = Random.Range (floorScrollSpeedMin, floorScrollSpeedMax);
+
+					int j = Random.Range(0,2);
+					if(j == 0){
+						shrinkFloor.GetComponent<FloorMaterialOffset> ().scrollSpeed *= -1;
+					}
+
 					floorsCount++;
 				}
 
