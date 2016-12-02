@@ -27,8 +27,9 @@ public class ShrinkCube : MonoBehaviour {
 	void Update () {
 		if (isClicked) {
 			GameObject.Find ("ClickTracker").GetComponent<ClickTracker> ().cubesClicked += cubeValue;
+			Instantiate (edgeBarrier, edgeFloor.transform.position + new Vector3(0f,2.5f,0f), Quaternion.identity);
 			Destroy (edgeFloor);
-			GameObject.Find ("rightWall(Clone)").transform.position -= new Vector3 (1.1f, 0f, 0f);
+			//GameObject.Find ("Wall_V2(Clone)").transform.position -= new Vector3 (1.1f, 0f, 0f);
 			Destroy (this.gameObject);
 		}
 	}
