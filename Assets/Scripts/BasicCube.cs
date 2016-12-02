@@ -7,6 +7,8 @@ public class BasicCube : MonoBehaviour {
 	private CameraClicker cameraClicker;
 	public bool isClicked = false;
 
+	public GameObject deathParticle;
+
 	private Rigidbody _rigidbody;
 
 	// Use this for initialization
@@ -19,6 +21,7 @@ public class BasicCube : MonoBehaviour {
 	void Update () {
 		if (isClicked) {
 			GameObject.Find ("ClickTracker").GetComponent<ClickTracker> ().cubesClicked += cubeValue;
+			Instantiate (deathParticle, transform.position, Quaternion.identity);
 			Destroy (this.gameObject);
 		}
 

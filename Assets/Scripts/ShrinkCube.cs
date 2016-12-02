@@ -12,6 +12,8 @@ public class ShrinkCube : MonoBehaviour {
 
 	private Rigidbody _rigidbody;
 
+	public GameObject deathParticle;
+
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +30,7 @@ public class ShrinkCube : MonoBehaviour {
 		if (isClicked) {
 			GameObject.Find ("ClickTracker").GetComponent<ClickTracker> ().cubesClicked += cubeValue;
 			Instantiate (edgeBarrier, edgeFloor.transform.position + new Vector3(0f,2.5f,0f), Quaternion.identity);
+			Instantiate (deathParticle, transform.position, Quaternion.Euler(new Vector3(0f,-90f,0f)));
 			Destroy (edgeFloor);
 			//GameObject.Find ("Wall_V2(Clone)").transform.position -= new Vector3 (1.1f, 0f, 0f);
 			Destroy (this.gameObject);
