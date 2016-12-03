@@ -124,7 +124,7 @@ public class BlockGenerator : MonoBehaviour {
 		}
 
 		Instantiate (frontWall, transform.position + new Vector3 (0f, 0.35f, 5f), Quaternion.Euler(new Vector3(0f,90f,0f)));
-		Instantiate (reward, transform.position + new Vector3((gridWidth / 2f), 0f, 3.5f), Quaternion.identity);
+		Instantiate (reward, transform.position + new Vector3((gridWidth / 2f), -1.076f, 3.5f), Quaternion.identity);
 
 		ModifyField ();
 	}
