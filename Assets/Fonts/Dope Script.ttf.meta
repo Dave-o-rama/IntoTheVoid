@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 78e6583f7b0d9aa42b2d1aeba6f48e0c
+timeCreated: 1481083932
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Dope Script
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: df2f46e6deb858d4a8e7be9b92245d0e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
